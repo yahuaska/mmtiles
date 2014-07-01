@@ -90,7 +90,7 @@
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
-     <string>/tmp/tiles/</string>
+     <string>/tmp/tiles</string>
     </property>
     <property name="flat">
      <bool>true</bool>

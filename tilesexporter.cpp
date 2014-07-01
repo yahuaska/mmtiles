@@ -3,7 +3,7 @@
 TilesExporter::TilesExporter(QObject *parent) :
     QObject(parent),
     m_palettePath("/home/ringo/.local/share/openxcom/data/GEODATA/PALETTES.DAT"),
-    m_exportPath("/tmp/tiles/"),
+    m_exportPath("/tmp/tiles"),
     m_dataPath("/home/ringo/.local/share/openxcom/data/GEODATA/SCANG.DAT")
 {
     connect(this, SIGNAL(tileExported()),
@@ -101,7 +101,8 @@ bool TilesExporter::savePixmap(const uchar *data, QString name)
             continue;
         m_pixmap->setPixel(i%4, i/4, m_colors[data[i]]);
     }
-    bool result = m_pixmap->scaled(10, 10).save(m_exportPath + name + ".png", "PNG");
+
+    bool result = m_pixmap->scaled(10, 10).save(QString("%1/%2.png").arg(m_exportPath).arg(name), "PNG");
     if (result)
     {
         emit tileExported();
